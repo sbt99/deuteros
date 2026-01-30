@@ -75,6 +75,12 @@ interface EntityReferenceFieldItemListInterface extends FieldItemListInterface {
 
 }
 
+interface FieldDefinitionInterface {
+
+  public function getName();
+
+}
+
 // Interfaces extending EntityInterface.
 namespace Drupal\Core\Entity;
 
