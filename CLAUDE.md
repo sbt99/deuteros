@@ -157,6 +157,16 @@ be used by user-provided context.
 - Field definition mocks are created by `ServiceDoublerInterface::createFieldDefinitionMock()`
 - Only fields passed to `create()` are defined; undefined fields return false/null
 
+**Subject Entity URL Support:**
+- `SubjectEntityFactory::create()` accepts an optional `$url` parameter
+- When provided, a URL stub class is generated that extends the entity class and
+  overrides `toUrl()` to return a Url double
+- The entity passes `instanceof` checks because the stub extends the entity class
+- **Limitation:** Final entity classes cannot use the URL parameter because PHP
+  does not allow extending final classes. A clear `LogicException` is thrown
+  with instructions to either remove the `final` keyword or mock `toUrl()`
+  separately
+
 **Iterator/Countable Support:**
 - Field item lists support `foreach` via `::getIterator` (if interface extends
   `\IteratorAggregate`) and `count()` via `::count` (if interface extends `\Countable`)

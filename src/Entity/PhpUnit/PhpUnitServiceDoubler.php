@@ -44,6 +44,7 @@ final class PhpUnitServiceDoubler implements ServiceDoublerInterface {
    */
   public function buildContainer(array $entityTypeConfigs): ContainerInterface {
     try {
+      // @phpstan-ignore-next-line globalDrupalDependencyInjection.useDependencyInjection
       $container = \Drupal::getContainer();
     }
     catch (\Exception $exception) {
